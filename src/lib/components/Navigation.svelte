@@ -11,7 +11,7 @@
 <nav class="list-nav p-4">
     <ul>
         <li><a href="/" on:click={drawerClose}>Create</a></li>
-        <li><a href="/" on:click={drawerClose}>Saved Palettes</a></li>
-        <li><a href="/" on:click={drawerClose}>More Tools</a></li>
+        <li><a href="/" on:click={drawerClose}>Saved Combinations</a></li>
+        <li><a href="/" on:click={drawerClose}>Feedback</a></li>
     </ul>
 </nav>
