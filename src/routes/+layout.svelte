@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Logo from '$lib/components/Logo.svelte';
-import Navigation from '$lib/components/Navigation.svelte';
+	import Navigation from '$lib/components/Navigation.svelte';
 	import '../app.postcss';
 	import { AppBar, AppShell, Drawer, getDrawerStore, initializeStores, LightSwitch } from '@skeletonlabs/skeleton';
 
