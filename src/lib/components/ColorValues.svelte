@@ -4,7 +4,7 @@
 
 
 <div class="container">
-	<h3 class="h3 text-center pb-4">Get Started!</h3>
+	<h3 class="h3 text-center">Get Started!</h3>
 	<label class="label text-center">
 		<span>How may colors would you like to combine?</span>
 		<select class="select text-center w-16">
