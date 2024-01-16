@@ -46,7 +46,7 @@
 		  {/each}
 		</div>
 		<!--Card Buttons -->
-		<div class="grid grid-cols-1 md:grid-cols-2 justif-center">
+		<div class="grid grid-cols-1 md:grid-cols-2 justify-items-center">
 			<div>
 				<button type="button" class="btn variant-filled">Generate</button>
 			</div>
