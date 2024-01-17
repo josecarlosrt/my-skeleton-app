@@ -31,12 +31,12 @@
 		  <label class="label text-center">
 		  <span class="mb-4">How may colors would you like to combine?</span>
 		  <select class="select w-16" bind:value={$inputValue} on:change={handleSelectChange}>
-			<option value="2">02</option>
-			<option value="3">03</option>
-			<option value="4">04</option>
-			<option value="5">05</option>
-			<option value="6">06</option>
-		  </select>
+			<option value={2}>02</option>
+			<option value={3}>03</option>
+			<option value={4}>04</option>
+			<option value={5}>05</option>
+			<option value={6}>06</option>
+		  </select>		  
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-3 p-6  gap-4 justify-center">
 		  {#each colorInputs as number (number)}
