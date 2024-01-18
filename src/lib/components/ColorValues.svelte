@@ -40,8 +40,15 @@
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-3 p-6  gap-4 justify-center">
 		  {#each colorInputs as number (number)}
-			<div>
-			  <input type="text" class="input" placeholder="#HEX CODE" value="#" id={`color#${number}`} />
+			<div class="relative">
+				<input type="text" class="input" placeholder="#HEX CODE" value="#" id={`color#${number}`} />
+				<div class="absolute inset-y-0 right-0 flex items-center pt-2 pr-2">
+					<button>
+						<span class="material-symbols-outlined">
+							colorize
+						</span>
+					</button>
+				</div>
 			</div>
 		  {/each}
 		</div>
@@ -57,3 +64,14 @@
 	  </div>
 	</div>
   </div>
+
+
+  <style>
+	.material-symbols-outlined {
+	  font-variation-settings:
+	  'FILL' 0,
+	  'wght' 400,
+	  'GRAD' 0,
+	  'opsz' 12
+	}
+	</style>
