@@ -41,7 +41,7 @@
 		<div class="grid grid-cols-1 md:grid-cols-3 p-6  gap-4 justify-center">
 		  {#each colorInputs as number (number)}
 			<div>
-			  <input type="text" class="input" id={`color#${number}`} />
+			  <input type="text" class="input" placeholder="#HEX CODE" value="#" id={`color#${number}`} />
 			</div>
 		  {/each}
 		</div>

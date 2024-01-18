@@ -1,8 +1,6 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script lang="ts">
 	import ColorValues from "$lib/components/ColorValues.svelte";
-
-
 </script>
 
 
