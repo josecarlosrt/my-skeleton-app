@@ -1,65 +1,92 @@
 <script context="module" lang="ts">
 	// Declare EyeDropper as a global variable
 	declare const EyeDropper: any;
-</script>
-
-<script lang="ts">
+  </script>
+  
+  <script lang="ts">
 	import { inputValue } from '$lib/stores';
 	import { onMount } from 'svelte';
   
 	let selectedValue: number = $inputValue || 2;
 	let colorInputs = Array.from({ length: selectedValue }, (_, index) => index + 1);
-
+  
 	function handleSelectChange(event: Event) {
-		const target = event.currentTarget as HTMLSelectElement;
-		selectedValue = parseInt(target.value, 10);
-		inputValue.set(selectedValue);
-		colorInputs = Array.from({ length: selectedValue }, (_, index) => index + 1);
+	  const target = event.currentTarget as HTMLSelectElement;
+	  selectedValue = parseInt(target.value, 10);
+	  inputValue.set(selectedValue);
+	  colorInputs = Array.from({ length: selectedValue }, (_, index) => index + 1);
 	}
-
+  
 	// Function To Activate Eye Dropper
 	const activateEyeDropper = async (inputId: string, number: number) => {
-		// Disable pointer events on the entire document temporarily
-		document.documentElement.style.pointerEvents = "none";
-
-		const targetInput = document.getElementById(inputId) as HTMLInputElement;
-
-		if (!targetInput) {
-			alert("Input field not found.");
-			return;
-		}
-		
-		try {
-			// Opening the eye dropper and getting the selected color
-			const eyeDropper = new EyeDropper();
-			const { sRGBHex } = await eyeDropper.open();
-
-			// Paste the color into the input field
-			targetInput.value = sRGBHex;
-
-			// Use the Clipboard API to copy the color code to the clipboard
-			await navigator.clipboard.writeText(sRGBHex);
-		} catch (error) {
-			console.error(error);
-			alert("Failed to copy the color code!");
-		} finally {
-			// Re-enable pointer events on the document
-			document.documentElement.style.pointerEvents = "auto";
-		}
+	  // Disable pointer events on the entire document temporarily
+	  document.documentElement.style.pointerEvents = 'none';
+  
+	  const targetInput = document.getElementById(inputId) as HTMLInputElement;
+  
+	  if (!targetInput) {
+		alert('Input field not found.');
+		return;
+	  }
+  
+	  try {
+		// Opening the eye dropper and getting the selected color
+		const eyeDropper = new EyeDropper();
+		const { sRGBHex } = await eyeDropper.open();
+  
+		// Paste the color into the input field
+		targetInput.value = sRGBHex;
+  
+		// Save the color value to local storage
+		localStorage.setItem(inputId, sRGBHex);
+  
+		// Use the Clipboard API to copy the color code to the clipboard
+		await navigator.clipboard.writeText(sRGBHex);
+	  } catch (error) {
+		console.error(error);
+		alert('Failed to copy the color code!');
+	  } finally {
+		// Re-enable pointer events on the document
+		document.documentElement.style.pointerEvents = 'auto';
+	  }
 	};
-
   
 	onMount(() => {
 	  if (!$inputValue) {
 		inputValue.set(selectedValue);
 	  }
+  
+	  // Read values from local storage and set them to the input fields
+	  colorInputs.forEach((number) => {
+		const inputId = `color#${number}`;
+		const targetInput = document.getElementById(inputId) as HTMLInputElement;
+		const savedColor = localStorage.getItem(inputId);
+  
+		if (targetInput && savedColor) {
+		  targetInput.value = savedColor;
+		}
+	  });
 	});
   
 	// Clear Field
 	function clearAllFields() {
-		console.log("Clear")
-	}
+    // Clear local storage
+    localStorage.clear();
+    console.log('Local storage cleared');
+
+    // Additional logic to clear input fields if needed
+    colorInputs.forEach((number) => {
+      const inputId = `color#${number}`;
+      const targetInput = document.getElementById(inputId) as HTMLInputElement;
+
+      if (targetInput) {
+        targetInput.value = '';
+      }
+    });
+  }
   </script>
+  
+  
 
   <div class="container">
 	<div>
