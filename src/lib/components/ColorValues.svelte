@@ -124,7 +124,7 @@
 		<!--Card Buttons -->
 		<div class="grid grid-cols-1 md:grid-cols-2 justify-items-center">
 			<div>
-				<button type="button" class="btn variant-filled">Generate</button>
+				<button type="button" class="btn variant-filled mb-2">Generate</button>
 			</div>
 			<div>
 				<button type="button" class="btn variant-filled" on:click={clearAllFields}>Clear All</button>
