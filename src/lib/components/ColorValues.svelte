@@ -70,7 +70,6 @@
 			targetInput.style.borderColor = savedColor; // Apply the border color
 		}
 		});
-
 	});
 
 	// Clear Field
@@ -91,13 +90,6 @@
 		});
 	}
 
-	// Disable Skeleton UI animation after a short delay (adjust as needed)
-	// Variable to control the Skeleton UI animation
-	let animate = true;
-
-    setTimeout(() => {
-		animate = false;
-    }, 1000);
   </script>
   
   
@@ -105,10 +97,9 @@
   <div class="container">
 	<div>
 	  <div class="w-full max-w-lg mx-auto my-4">
-		<div class="flex text-center items-center justify-center w-full" class:animate-pulse={animate}>
+		<div class="flex text-center items-center justify-center w-full">
 		  <label class="label text-center">
 		  <span class="mb-4">How may colors would you like to combine?</span>
-		  <div class="placeholder" />
 		  <select class="select w-16" bind:value={$inputValue} on:change={handleSelectChange}>
 			<option value={2}>02</option>
 			<option value={3}>03</option>
